@@ -2,26 +2,22 @@ package GUI.Elementos;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class Box extends JPanel {
-    JPanel contenedorClase;
-    JTextPane texto;
-    JPopupMenu menu;
-    public Box(){
-        texto = new JTextPane();
-        texto.setText("Prueba");
-        texto.setSize(300,150);
-        menu = new JPopupMenu();
-        menu.add("Hola");
-        menu.add("vete");
-        menu.add("al");
-        menu.add("Joraca");
-        contenedorClase = new JPanel();
-        contenedorClase.setPreferredSize(new Dimension(100, 40));
-        contenedorClase.setBackground(Color.ORANGE);
-        contenedorClase.setToolTipText("clase");
-        contenedorClase.setComponentPopupMenu(menu);
-        contenedorClase.add(texto);
+    private int red;
+    private int blue;
+    private int green;
+    final Random r = new Random();
+    public void paint(Graphics g){
+        super.paint(g);
+        red = r.nextInt(150);
+        blue = r.nextInt(200);
+        green = r.nextInt(256);
+        g.setColor(new Color(red,green,blue));
+        g.fillRoundRect(r.nextInt(10),r.nextInt(20),100,50, 15,15);
+        //setLocation(10,10);
+        //setOpaque(false);
     }
 
 }
