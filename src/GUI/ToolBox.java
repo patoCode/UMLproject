@@ -4,9 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ToolBox extends JPanel {
-    private GridLayout layout;
-    public ToolBox(int ancho, int alto,int rowsGridLayout, int colsGridLayout){
+    public ToolBox(int ancho, int alto){
         setPreferredSize(new Dimension(ancho,alto));
-        setBackground(Color.YELLOW);
+        setBackground(new Color(252,114,16));
+        setLayout(new FlowLayout());
     }
+
 }

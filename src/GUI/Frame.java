@@ -7,7 +7,6 @@ public class Frame extends JFrame {
         add(contenedor);
         setTitle(titulo);
         setSize(ancho,alto);
-        setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }

@@ -13,7 +13,7 @@ public class MotionListener implements MouseMotionListener {
     }
     @Override
     public void mouseDragged(MouseEvent e) {
-        pt = SwingUtilities.convertPoint(movingPanel, e.getX(), e.getY(), movingPanel);
+        pt = SwingUtilities.convertPoint(movingPanel, e.getX(), e.getY(), movingPanel.getParent());
         movingPanel.setBounds(pt.x, pt.y, movingPanel.getWidth(), movingPanel.getHeight());
         movingPanel.repaint();
     }
