@@ -12,7 +12,7 @@ public class ToolButton extends JButton{
     private ActionButtonsListener acciones;
     private DrawElement dibujo;
 
-    public ToolButton(JPanel actionZone, DrawInterfaceElement dibujo, String texto, Dimension dimension) {
+    public ToolButton(JPanel actionZone, DrawElement dibujo, String texto, Dimension dimension) {
         this.actionZone = actionZone;
         this.dibujo = dibujo;
         this.acciones = new ActionButtonsListener(actionZone, texto);
@@ -28,38 +28,7 @@ public class ToolButton extends JButton{
         // end estilos
         addActionListener(this.acciones);
     }
-    public ToolButton(JPanel actionZone, DrawClassElement dibujo, String texto, Dimension dimension) {
-        this.actionZone = actionZone;
-        this.dibujo = dibujo;
-        this.acciones = new ActionButtonsListener(actionZone, texto);
-        // estilos
-        setBackground(new Color(220,218,221));
-        setForeground(Color.WHITE);
-        setOpaque(true);
-        setContentAreaFilled(false);
-        setBorderPainted(false);
-        setBorder(new LineBorder(new Color(243,142,62)));
-        setPreferredSize(dimension);
-        setText(texto.toUpperCase());
-        // end estilos
-        addActionListener(this.acciones);
-    }
-    public ToolButton(JPanel actionZone, DrawPersonaElement dibujo, String texto, Dimension dimension) {
-        this.actionZone = actionZone;
-        this.dibujo = dibujo;
-        this.acciones = new ActionButtonsListener(actionZone, texto);
-        // estilos
-        setBackground(new Color(220,218,221));
-        setForeground(Color.WHITE);
-        setOpaque(true);
-        setContentAreaFilled(false);
-        setBorderPainted(false);
-        setBorder(new LineBorder(new Color(223,121,1)));
-        setPreferredSize(dimension);
-        setText(texto.toUpperCase());
-        // end estilos
-        addActionListener(this.acciones);
-    }
+
     @Override
     protected void paintComponent(Graphics g) {
         final Graphics2D g2 = (Graphics2D) g.create();

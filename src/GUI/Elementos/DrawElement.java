@@ -1,9 +1,7 @@
 package GUI.Elementos;
 
 
-import GUI.Comportamientos.ActionPopupMenuListener;
-import GUI.Comportamientos.ActionsItemsPopupMenu;
-import GUI.Comportamientos.Drawable;
+import GUI.Comportamientos.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +16,7 @@ public class DrawElement extends JPanel implements Drawable{
     private ActionListener acciones;
     public DrawElement(){
         super();
-        acciones = new ActionsItemsPopupMenu();
+        //acciones = new ActionsItemsPopupMenu();
         r = rand.nextInt(256);
         g = rand.nextInt(256);
         b = rand.nextInt(256);
@@ -29,30 +27,20 @@ public class DrawElement extends JPanel implements Drawable{
         texto.setOpaque(false);
         texto.setBorder(BorderFactory.createLineBorder(new Color(150,151,155)));
         texto.setHorizontalAlignment(JTextField.CENTER);
+
         setLayout(new BorderLayout(5,5));
         add(texto, BorderLayout.NORTH);
         setLocation(15,15);
         setBounds(15,15,150,80);
         setBorder(BorderFactory.createLineBorder(new Color(150,151,155)));
 
-        final JPopupMenu menu = new JPopupMenu();
+        PopUpMenu menu = new PopUpMenu();
         ActionsItemsPopupMenu actionItems = new ActionsItemsPopupMenu();
-        menu.addPopupMenuListener(new ActionPopupMenuListener());
-        JMenuItem item = new JMenuItem("Nuevo");
-        item.addActionListener(actionItems);
-        menu.add(item);
+        ActionsItemsPopupMenu accionEditar = new ActionItemPopupMenuEdit();
+        ActionsItemsPopupMenu accioncrear = new ActionItemPopupMenuCreate();
 
-        JMenuItem item2 = new JMenuItem("Editar");
-        item2.addActionListener(actionItems);
-        menu.add(item2);
-
-        JMenuItem item3 = new JMenuItem("Copiar");
-        item3.addActionListener(actionItems);
-        menu.add(item3);
-
-        JMenuItem item4 = new JMenuItem("Eliminar");
-        item4.addActionListener(actionItems);
-        menu.add(item4);
+        menu.addActionElment("CREAR", accioncrear);
+        menu.addActionElment("EDITAR", accionEditar);
 
         addMouseListener(new MouseAdapter() {
             @Override
