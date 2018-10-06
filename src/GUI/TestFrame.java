@@ -30,21 +30,14 @@ public class TestFrame{
         ToolButton redondos = new ToolButton(drawZone, el,"Interface", buttonsDimension);
         ToolButton cuadrados = new ToolButton(drawZone, cl,"Clase", buttonsDimension);
         ToolButton personas = new ToolButton(drawZone, per,"User", buttonsDimension);
-        ToolButton linea = new ToolButton(drawZone, per2,"Continua", buttonsDimension);
-        ToolButton punteada = new ToolButton(drawZone, per3,"Punteada", buttonsDimension);
-        ToolButton dhf = new ToolButton(drawZone, per3,"dhf", buttonsDimension);
-
 
         //agrego lapiz a mi toolbox
         box.add(redondos);
         box.add(cuadrados);
         box.add(personas);
-        box.add(linea);
-        box.add(punteada);
-        box.add(dhf);
 
         main = new MainContainer(box, drawZone, 1000,600);
-        frame = new Frame(main, "UML",700,601);
+        frame = new Frame(main, "UEMELE",700,601);
         frame.repaint();
     }
     public static void main(String [] args){

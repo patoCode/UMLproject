@@ -5,24 +5,17 @@ import GUI.Comportamientos.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Random;
 
 public class DrawElement extends JPanel implements Drawable{
-    protected int r,g,b;
-    static final Random rand = new Random();
-    private ActionListener acciones;
+    private String tipo;
     public DrawElement(){
         super();
-        //acciones = new ActionsItemsPopupMenu();
-        r = rand.nextInt(256);
-        g = rand.nextInt(256);
-        b = rand.nextInt(256);
     }
     @Override
     public JPanel Draw(String tipo) {
+        this.setTipo(tipo);
         JTextField texto = new JTextField(tipo);
         texto.setOpaque(false);
         texto.setBorder(BorderFactory.createLineBorder(new Color(150,151,155)));
@@ -35,12 +28,13 @@ public class DrawElement extends JPanel implements Drawable{
         setBorder(BorderFactory.createLineBorder(new Color(150,151,155)));
 
         PopUpMenu menu = new PopUpMenu();
-        ActionsItemsPopupMenu actionItems = new ActionsItemsPopupMenu();
-        ActionsItemsPopupMenu accionEditar = new ActionItemPopupMenuEdit();
+        ActionsItemsPopupMenu accionEditar = new ActionItemPopupMenuEdit(tipo);
         ActionsItemsPopupMenu accioncrear = new ActionItemPopupMenuCreate();
 
-        menu.addActionElment("CREAR", accioncrear);
-        menu.addActionElment("EDITAR", accionEditar);
+        menu.addActionElment("Agregarción", accioncrear);
+        menu.addActionElment("Composicion", accionEditar);
+        menu.addActionElment("Generalización", accionEditar);
+        menu.addActionElment("Realización", accionEditar);
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -55,6 +49,7 @@ public class DrawElement extends JPanel implements Drawable{
 
         return this;
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         final Graphics2D g2 = (Graphics2D) g.create();
@@ -66,5 +61,13 @@ public class DrawElement extends JPanel implements Drawable{
         g2.fillRect(0, 0, getWidth(), getHeight());
         g2.dispose();
         super.paintComponent(g);
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

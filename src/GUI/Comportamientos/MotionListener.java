@@ -17,7 +17,6 @@ public class MotionListener implements MouseMotionListener {
         movingPanel.setBounds(pt.x, pt.y, movingPanel.getWidth(), movingPanel.getHeight());
         movingPanel.repaint();
     }
-
     @Override
     public void mouseMoved(MouseEvent e) {}
 }
