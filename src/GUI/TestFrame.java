@@ -1,7 +1,9 @@
 package GUI;
 
 import java.awt.*;
+import java.util.ArrayList;
 
+import GUI.Comportamientos.ActionItemPopupMenu;
 import GUI.Elementos.*;
 
 public class TestFrame{
@@ -20,16 +22,25 @@ public class TestFrame{
         // ZONA DE DIBUJO
         drawZone = new WorkFrame(750,550);
         // QUE DIBUJARE
-        // Colores
-        DrawElement el = new DrawInterfaceElement();
-        DrawElement cl = new DrawClassElement();
-        DrawElement per = new DrawPersonaElement();
-        DrawElement per2 = new DrawPersonaElement();
-        DrawElement per3 = new DrawPersonaElement();
+        DrawElement interfaseGrafico = new DrawInterfaceElement("interface");
+        DrawElement claseGrafico = new DrawClassElement("clase");
+        DrawElement personaGrafico = new DrawPersonaElement("persona");
+
+        // OBJETO PARA EMPAQUTAR REGLAS Y posibilidad de hacer
+        ActionItemPopupMenu agregar = new ActionItemPopupMenu("Agregacion", "punteada", drawZone);
+        agregar.setMe(interfaseGrafico);
+        agregar.addPosible(interfaseGrafico);
+        agregar.addPosible(claseGrafico);
+
+        ArrayList<ActionItemPopupMenu> config = new ArrayList<>();
+        config.add(agregar);
+        ArrayList<ActionItemPopupMenu> config2 = new ArrayList<>();
+        ArrayList<ActionItemPopupMenu> config3 = new ArrayList<>();
+
         // LAPIZ
-        ToolButton redondos = new ToolButton(drawZone, el,"Interface", buttonsDimension);
-        ToolButton cuadrados = new ToolButton(drawZone, cl,"Clase", buttonsDimension);
-        ToolButton personas = new ToolButton(drawZone, per,"User", buttonsDimension);
+        ToolButton redondos = new ToolButton(drawZone, interfaseGrafico, config,"Interface", buttonsDimension);
+        ToolButton cuadrados = new ToolButton(drawZone, claseGrafico,config2, "Clase", buttonsDimension);
+        ToolButton personas = new ToolButton(drawZone, personaGrafico, config3, "User", buttonsDimension);
 
         //agrego lapiz a mi toolbox
         box.add(redondos);

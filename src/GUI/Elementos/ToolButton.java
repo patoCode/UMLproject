@@ -1,10 +1,12 @@
 package GUI.Elementos;
 
 import GUI.Comportamientos.ActionButtonsListener;
+import GUI.Comportamientos.ActionItemPopupMenu;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.util.ArrayList;
 
 
 public class ToolButton extends JButton{
@@ -12,10 +14,10 @@ public class ToolButton extends JButton{
     private ActionButtonsListener acciones;
     private DrawElement dibujo;
 
-    public ToolButton(JPanel actionZone, DrawElement dibujo, String texto, Dimension dimension) {
+    public ToolButton(JPanel actionZone, DrawElement dibujo, ArrayList<ActionItemPopupMenu> config, String texto, Dimension dimension) {
         this.actionZone = actionZone;
         this.dibujo = dibujo;
-        this.acciones = new ActionButtonsListener(actionZone, texto);
+        this.acciones = new ActionButtonsListener(actionZone, texto, config);
         // estilos
         setBackground(new Color(220,218,221));
         setForeground(Color.WHITE);

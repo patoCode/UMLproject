@@ -6,5 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DrawInterfaceElement extends DrawElement implements Drawable {
-
+    public DrawInterfaceElement(String tipo) {
+        super(tipo);
+    }
 }

@@ -1,18 +1,15 @@
 package GUI.Elementos;
 
 import GUI.Comportamientos.ActionPopupMenuListener;
-import GUI.Comportamientos.ActionsItemsPopupMenu;
+import GUI.Comportamientos.ActionItemPopupMenu;
 
 import javax.swing.*;
 
 public class PopUpMenu extends JPopupMenu {
-    private ActionsItemsPopupMenu actionItems;
+    private ActionItemPopupMenu actionItems;
 
-    public PopUpMenu(){
-        actionItems = new ActionsItemsPopupMenu();
-    }
-    public void addActionElment(String label, ActionsItemsPopupMenu action){
-        JMenuItem menuItem = new JMenuItem(label);
+    public void addActionElment(ActionItemPopupMenu action){
+        JMenuItem menuItem = new JMenuItem(action.getLabel());
         menuItem.addActionListener(action);
         addPopupMenuListener(new ActionPopupMenuListener());
         add(menuItem);

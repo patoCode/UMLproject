@@ -7,14 +7,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class DrawElement extends JPanel implements Drawable{
     private String tipo;
-    public DrawElement(){
-        super();
-    }
+    public DrawElement(String tipo){this.tipo = tipo;}
+
     @Override
-    public JPanel Draw(String tipo) {
+    public JPanel Draw(String tipo, ArrayList<ActionItemPopupMenu> config) {
         this.setTipo(tipo);
         JTextField texto = new JTextField(tipo);
         texto.setOpaque(false);
@@ -28,13 +28,14 @@ public class DrawElement extends JPanel implements Drawable{
         setBorder(BorderFactory.createLineBorder(new Color(150,151,155)));
 
         PopUpMenu menu = new PopUpMenu();
-        ActionsItemsPopupMenu accionEditar = new ActionItemPopupMenuEdit(tipo);
-        ActionsItemsPopupMenu accioncrear = new ActionItemPopupMenuCreate();
-
-        menu.addActionElment("Agregarción", accioncrear);
-        menu.addActionElment("Composicion", accionEditar);
-        menu.addActionElment("Generalización", accionEditar);
-        menu.addActionElment("Realización", accionEditar);
+        if(config.size() > 0){
+            for(ActionItemPopupMenu opcion: config){
+                menu.addActionElment(opcion);
+            }
+        }else{
+            ActionItemPopupMenu generalizar = new ActionItemPopupMenu();
+            menu.addActionElment(generalizar);
+        }
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -49,7 +50,6 @@ public class DrawElement extends JPanel implements Drawable{
 
         return this;
     }
-
     @Override
     protected void paintComponent(Graphics g) {
         final Graphics2D g2 = (Graphics2D) g.create();
@@ -62,12 +62,11 @@ public class DrawElement extends JPanel implements Drawable{
         g2.dispose();
         super.paintComponent(g);
     }
-
     public String getTipo() {
         return tipo;
     }
-
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
 }
